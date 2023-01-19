@@ -5,7 +5,7 @@ noOfCores: 4
 #maxNoArgs=4
 #noAtoms=100000
 #noTuples=500000
-persistenceFile: persistent.nt
+persistenceFile: ../../../../persistent.nt
 characterEncoding: UTF-8
 eqReduction: true
 addTimestamps: [0]

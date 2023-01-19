@@ -19,7 +19,8 @@ NLG:
 NLU:
   eng:
     class: de.dfki.mlt.rudimant.agent.nlp.SrgsParser
-    grammar: src/main/resources/grammars/srgs/chatcat.xml
+    grammar: src/main/resources/grammars/srgs/chatcat.abnf
+    converter: src/main/resources/grammars/cplanner/srgsconv
     tokenizer:
       class: de.dfki.mlt.rudimant.agent.nlp.TrivialTokenizer
       toLower: false

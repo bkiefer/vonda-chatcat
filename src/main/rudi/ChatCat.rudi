@@ -11,7 +11,7 @@ if (user && !user.name && !(myLastDA() >= #WHQuestion(Name))) {
 }
 
 greet_back:
-if (lastDA() >= #InitialGreeting(Greet)) {
+if (lastDA() >= #Salutation(Greet)) {
   propose("greet back") {
     if (!saidInSession(#Salutation(top)))
       emitDA(#ReturnGreeting(Greet));
@@ -35,7 +35,7 @@ if (lastDA() >= #Inform(Name)) {
 proactive_greet:
 /** use this timeout exactly once */
 if (! hasActiveTimeout("robot_starts") && ! isTimedOut("robot_starts")) {
-  timeout("robot_starts", 4000) {
+  timeout("robot_starts", 6000) {
   start_conversation:
     // Salutation is the superclass of Initial-/ReturnGreeting
     if (! (receivedInSession(#Salutation(top))

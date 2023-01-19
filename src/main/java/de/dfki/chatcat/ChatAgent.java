@@ -5,9 +5,13 @@ import java.io.IOException;
 import java.util.Map;
 
 import de.dfki.lt.hfc.WrongFormatException;
+import de.dfki.lt.hfc.db.HfcDbHandler;
+import de.dfki.lt.hfc.db.rdfProxy.DbClient;
 import de.dfki.lt.hfc.db.rdfProxy.Rdf;
 import de.dfki.lt.hfc.db.rdfProxy.RdfProxy;
-import de.dfki.lt.hfc.db.server.HfcDbHandler;
+import de.dfki.lt.hfc.db.remote.HfcDbService;
+import de.dfki.lt.hfc.db.rpc.RPCFactory;
+import de.dfki.lt.hfc.db.server.ClientAdapter;
 import de.dfki.lt.hfc.db.server.HfcDbServer;
 import de.dfki.mlt.rudimant.agent.Agent;
 import de.dfki.mlt.rudimant.agent.Behaviour;
@@ -19,7 +23,7 @@ public abstract class ChatAgent extends Agent implements Constants {
   Rdf robot;
   String DEFNS = "cat";
 
-  private HfcDbHandler handler;
+  private DbClient handler;
   private HfcDbServer server;
 
   private RdfProxy startClient(File configDir, Map<String, Object> configs)
@@ -30,13 +34,18 @@ public abstract class ChatAgent extends Agent implements Constants {
     }
     server = new HfcDbServer(new File(configDir, ontoFileName).getPath());
     if (configs.containsKey(CFG_SERVER_PORT)) {
-      server.runServer((int) configs.get(CFG_SERVER_PORT));
+      // HFC via network
+      int port = (int) configs.get(CFG_SERVER_PORT);
+      server.runServer(port);
+      handler = new ClientAdapter(RPCFactory.createSyncClient(
+          HfcDbService.Client.class, "localhost", port));
+    } else {
+      handler = new HfcDbHandler(ontoFileName);
     }
-    handler = server.getHandler();
     RdfProxy proxy = new RdfProxy(handler);
     handler.registerStreamingClient(proxy);
     return proxy;
-    }
+  }
 
   @SuppressWarnings({ "rawtypes", "unchecked" })
   public void init(File configDir, String language, Map configs)
@@ -53,7 +62,6 @@ public abstract class ChatAgent extends Agent implements Constants {
 
   @Override
   public void shutdown() {
-    handler.shutdown();
     if (server != null) server.shutdown();
     super.shutdown();
   }

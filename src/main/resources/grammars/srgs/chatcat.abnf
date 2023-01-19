@@ -1,0 +1,17 @@
+#ABNF 1.0 UTF-8;
+
+language en-EN;
+root $top;
+mode voice;
+tag-format "semantics/1.0";
+
+public $top = ($greet | $informName) { out = $%1; };
+
+$greet =
+  (Hello | Hi | How are you | Good (morning|evening)) {
+      out.da="Salutation"; out.prop="Greet";
+  };
+
+$informName =
+  (My name is|"I'm"|I am) "$$.*"
+    { out.da="Inform"; out.prop="Name"; out.what="$$1" };
