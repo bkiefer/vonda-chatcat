@@ -1,6 +1,7 @@
 package de.dfki.chatcat;
 
-import static de.dfki.chatcat.Constants.*;
+import static de.dfki.chatcat.Constants.CFG_ONTOLOGY_FILE;
+import static de.dfki.chatcat.Constants.CFG_VISUALISE;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,7 +10,6 @@ import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.apache.thrift.transport.TTransportException;
 import org.yaml.snakeyaml.Yaml;
 
 import de.dfki.chatcat.ui.GUI;
@@ -78,7 +78,7 @@ public class Main {
   }
 
   public static void main(String[] args)
-      throws TTransportException, IOException, WrongFormatException, InterruptedException {
+      throws IOException, WrongFormatException, InterruptedException {
     //BasicConfigurator.configure();
 
     OptionParser parser = new OptionParser("c:");

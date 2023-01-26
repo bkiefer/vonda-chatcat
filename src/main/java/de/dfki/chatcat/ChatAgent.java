@@ -9,10 +9,6 @@ import de.dfki.lt.hfc.db.HfcDbHandler;
 import de.dfki.lt.hfc.db.rdfProxy.DbClient;
 import de.dfki.lt.hfc.db.rdfProxy.Rdf;
 import de.dfki.lt.hfc.db.rdfProxy.RdfProxy;
-import de.dfki.lt.hfc.db.remote.HfcDbService;
-import de.dfki.lt.hfc.db.rpc.RPCFactory;
-import de.dfki.lt.hfc.db.server.ClientAdapter;
-import de.dfki.lt.hfc.db.server.HfcDbServer;
 import de.dfki.mlt.rudimant.agent.Agent;
 import de.dfki.mlt.rudimant.agent.Behaviour;
 import de.dfki.mlt.rudimant.agent.DialogueAct;
@@ -24,7 +20,7 @@ public abstract class ChatAgent extends Agent implements Constants {
   String DEFNS = "cat";
 
   private DbClient handler;
-  private HfcDbServer server;
+  private HfcDbHandler server;
 
   private RdfProxy startClient(File configDir, Map<String, Object> configs)
       throws IOException, WrongFormatException {
@@ -32,16 +28,9 @@ public abstract class ChatAgent extends Agent implements Constants {
     if (ontoFileName == null) {
       throw new IOException("Ontology file is missing.");
     }
-    server = new HfcDbServer(new File(configDir, ontoFileName).getPath());
-    if (configs.containsKey(CFG_SERVER_PORT)) {
-      // HFC via network
-      int port = (int) configs.get(CFG_SERVER_PORT);
-      server.runServer(port);
-      handler = new ClientAdapter(RPCFactory.createSyncClient(
-          HfcDbService.Client.class, "localhost", port));
-    } else {
-      handler = new HfcDbHandler(ontoFileName);
-    }
+    server = new HfcDbHandler(new File(configDir, ontoFileName).getPath());
+    handler = new HfcDbHandler(ontoFileName);
+
     RdfProxy proxy = new RdfProxy(handler);
     handler.registerStreamingClient(proxy);
     return proxy;
