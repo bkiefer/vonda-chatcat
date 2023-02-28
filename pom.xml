@@ -6,14 +6,6 @@
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <repositories>
-      <repository>
-        <id>project_local</id>
-        <name>project_local</name>
-        <url>file://${project.basedir}/../../repo</url>
-      </repository>
-    </repositories>
-
     <dependencies>
       <dependency>
         <groupId>de.dfki.mlt</groupId>

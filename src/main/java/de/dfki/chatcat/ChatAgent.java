@@ -11,13 +11,12 @@ import de.dfki.lt.hfc.db.rdfProxy.Rdf;
 import de.dfki.lt.hfc.db.rdfProxy.RdfProxy;
 import de.dfki.mlt.rudimant.agent.Agent;
 import de.dfki.mlt.rudimant.agent.Behaviour;
-import de.dfki.mlt.rudimant.agent.DialogueAct;
+import de.dfki.mlt.rudimant.agent.nlp.DialogueAct;
 
 public abstract class ChatAgent extends Agent implements Constants {
 
   Rdf user;
   Rdf robot;
-  String DEFNS = "cat";
 
   private DbClient handler;
   private HfcDbHandler server;
@@ -39,6 +38,7 @@ public abstract class ChatAgent extends Agent implements Constants {
   @SuppressWarnings({ "rawtypes", "unchecked" })
   public void init(File configDir, String language, Map configs)
           throws IOException, WrongFormatException {
+    DEFNS = "cat"; // set the default short namespace
     RdfProxy proxy = startClient(configDir, configs);
     super.init(configDir, language, proxy, configs);
     robot = proxy.getRdf("<chatcat:robot1>");

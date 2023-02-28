@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 
 import de.dfki.chatcat.StubClient;
 import de.dfki.mlt.rudimant.agent.Behaviour;
-import de.dfki.mlt.rudimant.agent.DialogueAct;
+import de.dfki.mlt.rudimant.agent.nlp.DialogueAct;
 
 /**
  *

@@ -12,6 +12,8 @@ import de.dfki.lt.hfc.WrongFormatException;
 import de.dfki.lt.hfc.types.XsdDouble;
 import de.dfki.lt.hfc.types.XsdFloat;
 import de.dfki.mlt.rudimant.agent.*;
+import de.dfki.mlt.rudimant.agent.nlp.DialogueAct;
+
 import javax.swing.JLabel;
 
 public class StubClient implements CommunicationHub {
