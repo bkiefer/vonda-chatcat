@@ -1,6 +1,4 @@
-/*@
 import de.dfki.chatcat.util.Date;
- @*/
 
 ask_for_name:
 if (user && !user.name && !(myLastDA() >= #WHQuestion(Name))) {
