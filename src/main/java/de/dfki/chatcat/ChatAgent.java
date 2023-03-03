@@ -40,7 +40,7 @@ public abstract class ChatAgent extends Agent implements Constants {
           throws IOException, WrongFormatException {
     DEFNS = "cat"; // set the default short namespace
     RdfProxy proxy = startClient(configDir, configs);
-    super.init(configDir, language, proxy, configs);
+    super.init(configDir, language, proxy, configs, "cat");
     robot = proxy.getRdf("<chatcat:robot1>");
 
     // start first round of rule evaluations
