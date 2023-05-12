@@ -38,9 +38,10 @@ public abstract class ChatAgent extends Agent implements Constants {
   @SuppressWarnings({ "rawtypes", "unchecked" })
   public void init(File configDir, String language, Map configs)
           throws IOException, WrongFormatException {
-    DEFNS = "cat"; // set the default short namespace
     RdfProxy proxy = startClient(configDir, configs);
-    super.init(configDir, language, proxy, configs, "cat");
+    // the last parameter sets the default namespace for creating instances to
+    // `chatcat:`
+    super.init(configDir, language, proxy, configs, "chatcat");
     robot = proxy.getRdf("<chatcat:robot1>");
 
     // start first round of rule evaluations

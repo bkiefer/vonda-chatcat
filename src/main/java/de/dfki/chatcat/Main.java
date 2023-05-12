@@ -20,7 +20,7 @@ import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 
 /**
- * The main class to start the ReCo / Socrates test environment
+ * The main class to start the application
  */
 public class Main {
   public static Map<String, Object> configs;
@@ -40,7 +40,7 @@ public class Main {
 
   final static Object [][] defaults = {
       { CFG_VISUALISE, false , "v" },
-      { CFG_ONTOLOGY_FILE, "src/main/resources/ontology/chatcat.ini", "o" },
+      { CFG_ONTOLOGY_FILE, "src/main/resources/ontology/chatcat.yml", "o" },
   };
 
   public static Map<String, Object> defaultConfig() {
