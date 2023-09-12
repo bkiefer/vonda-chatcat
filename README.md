@@ -5,7 +5,8 @@ Installation instructions:
 ## Linux
 These instructions are for Linux-Systems (concretely: Ubuntu 20.04 or higher).
 
-The biggest part of the installation possibly has already happened: the installation of VOnDA, i.e. of it's compiler and runtime jar (see in the root directory of this repository)
+In order to run this example, make sure the VOnDA compiler is available in `../vonda/compile`.
+Adapt `compile` in the root directory if required.
 
 The example can now be build as follows:
 
@@ -28,7 +29,8 @@ Installationsanleitung:
 Diese Anleitung ist für Linux-Systeme (konkret: Ubuntu 20.04 oder
 höher) geschrieben.
 
-Der größte Teil der Installation ist schon passiert: die Installation von VOnDA, d.h. des Compilers und runtime-jar
+Um dieses Beispiel laufen zu lassen, bitte sicherstellen, dass der VOnDA Compiler in `../vonda/compile` verfügbar ist.
+Bitte `compile` im Wurzelverzeichnis anpassen falls nötig.
 
 Das Beispiel kann jetzt folgendermaßen gebaut und gestartet werden
 
