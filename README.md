@@ -1,8 +1,10 @@
+[![mvn build](https://github.com/bkiefer/vonda-chatcat/actions/workflows/maven.yml/badge.svg)](https://github.com/bkiefer/vonda-chatcat/actions/workflows/maven.yml)
+
 # ChatCat Example (German translation below)
 
-Installation instructions:
+## Installation instructions:
 
-## Linux
+### Linux
 These instructions are for Linux-Systems (concretely: Ubuntu 20.04 or higher).
 
 In order to run this example, make sure the VOnDA compiler is available in `../vonda/compile`.
@@ -23,9 +25,9 @@ mvn install
 
 # ChatCat Beispiel
 
-Installationsanleitung:
+## Installationsanleitung:
 
-## Linux
+### Linux
 Diese Anleitung ist für Linux-Systeme (konkret: Ubuntu 20.04 oder
 höher) geschrieben.
 
