@@ -11,7 +11,16 @@
         <groupId>de.dfki.mlt</groupId>
         <artifactId>vonda</artifactId>
         <version>[3.0.5,)</version>
-        <type>jar</type>
+        <exclusions>
+          <exclusion>
+            <groupId>com.google.googlejavaformat</groupId>
+            <artifactId>google-java-format</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>de.dfki.mlt</groupId>
+            <artifactId>dataviz</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
     </dependencies>
 
