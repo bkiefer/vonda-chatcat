@@ -1,4 +1,4 @@
 #!/bin/sh
 script_dir=`dirname $0`
 
-../vonda/compile "$@" -c "$script_dir/config.yml"
+../vonda/bin/vondac "$@" -c "$script_dir/config.yml"
